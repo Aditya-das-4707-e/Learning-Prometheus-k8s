@@ -142,6 +142,14 @@ This file (`values.yaml`) contains settings for Prometheus, Grafana, and Alertma
 ## **📌 Step 6: Install Prometheus Stack using Helm**  
 
 Now, install the **kube-prometheus-stack** Helm chart in the `monitoring` namespace:  
+```bash
+helm install prometheus-stack prometheus-community/kube-prometheus-stack \
+--namespace monitoring \
+--set prometheus.service.nodePort=30000 \
+--set prometheus.service.type=NodePort \
+--set grafana.service.nodePort=31000 \
+--set grafana.service.type=NodePort
+```
 
 ```bash
 helm install prometheus-stack prometheus-community/kube-prometheus-stack -n monitoring
